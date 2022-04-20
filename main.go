@@ -7,7 +7,7 @@ import (
 
 func loginHandler() http.HandlerFunc {
 	return func(writer http.ResponseWriter, request *http.Request) {
-		tmpl, err := template.New("login.html").ParseFiles("resources/pages/login.html")
+		tmpl, err := template.New("login.html").ParseFiles("assets/pages/login.html")
 		if err != nil {
 			http.Error(writer, err.Error(), http.StatusInternalServerError)
 			return
@@ -24,6 +24,6 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.Handle("/login", loginHandler())
-	http.Handle("/images/", http.StripPrefix("/images/", http.FileServer(http.Dir("resources/images"))))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets/"))))
 	http.ListenAndServe("localhost:55443", mux)
 }
