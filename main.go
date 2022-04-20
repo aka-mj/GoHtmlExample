@@ -21,9 +21,9 @@ func loginHandler() http.HandlerFunc {
 	}
 }
 func main() {
-	mux := http.NewServeMux()
+	// mux := http.NewServeMux()
 
-	mux.Handle("/login", loginHandler())
+	http.Handle("/login", loginHandler())
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets/"))))
-	http.ListenAndServe("localhost:55443", mux)
+	http.ListenAndServe("localhost:55443", nil)
 }
