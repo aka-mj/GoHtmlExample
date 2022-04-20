@@ -24,6 +24,6 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.Handle("/login", loginHandler())
-	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets/"))))
+	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("./assets/"))))
 	http.ListenAndServe("localhost:55443", mux)
 }
